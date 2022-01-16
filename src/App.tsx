@@ -1,24 +1,31 @@
-import React from "react";
-import logo from "./logo.svg";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import NavBar from "./components/NavBar/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-//TDO create a link component
+import Shop from "./components/Content/Shop";
 
-interface Props {
-	/**
-	 * This is the url of the link
-	 */
-	url: string;
-	className?: string;
-	children: React.ReactNode;
+export default function App() {
+	return (
+		<Router>
+			<Box sx={{ pb: 7 }}>
+				<CssBaseline />
+
+				<Routes>
+					<Route
+						path="history"
+						element={<div>Hello guys, you clicked History</div>}
+					/>
+					<Route path="shop" element={<Shop />} />
+					<Route
+						path="account"
+						element={<div>Hello guys, you clicked Accounts</div>}
+					/>
+				</Routes>
+
+				<NavBar />
+			</Box>
+		</Router>
+	);
 }
-
-const Link = ({ url, children }: Props) => {
-	return <a href={url}>{children}</a>;
-};
-
-function App() {
-	return <div className="App"></div>;
-}
-
-export default App;
